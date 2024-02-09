@@ -1,57 +1,41 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DashboardAllTask = () => {
-    const datas = [
-  {
-    title: "Apple MacBook Pro 17\"",
-    taskDesc: "Silver",
-    status: "inComplete",
-    priority: "low",
-    deadLine:"2-12-2024"
-  },
-  {
-    title: "Apple MacBook Pro 17\"",
-    taskDesc: "Silver",
-    status: "inComplete",
-    priority: "low",
-    deadLine:"2-12-2024"
-  },
-  {
-    title: "Apple MacBook Pro 17\"",
-    taskDesc: "Silver",
-    status: "inComplete",
-    priority: "low",
-    deadLine:"2-12-2024"
-  },
-  {
-    title: "Apple MacBook Pro 17\"",
-    taskDesc: "Silver",
-    status: "inComplete",
-    priority: "low",
-    deadLine:"2-12-2024"
-  },
-  {
-    title: "Apple MacBook Pro 17\"",
-    taskDesc: "Silver",
-    status: "inComplete",
-    priority: "low",
-    deadLine:"2-12-2024"
-  },
-  
-];
+    const [status,setStatus] = useState("all")
+    const [datas,setDatas] = useState([])
+
+    useEffect(() => {
+     const  Fetching = async() => {
+        const response = await axios.get(`http://localhost:5000/tasks?value=${status}`);
+     setDatas(response.data)
+
+     }
+     Fetching();
+
+    }, [status]);
+
+console.log(datas)
 
 
   return (
     <div className="relative  overflow-x-auto sm:rounded-lg">
       <div className="flex-column flex flex-wrap items-center justify-between space-y-4 pb-4 sm:flex-row sm:space-y-0">
-        {/* selector  */}
+        {/* selector - status  */}
         <div className="mx-4">
           <select
             className="rounded-lg border-[2px] border-gray-500/30 px-6 py-[6px] text-sm font-medium text-[#6B7280]"
             name=""
             id=""
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
           >
-            <option value="">Last 30 days</option>
+            <option value="all" selected>
+              Filter
+            </option>
+            <option value="complete">complete</option>
+            <option value="inComplete">inComplete</option>
           </select>
         </div>
       </div>
@@ -60,13 +44,16 @@ const DashboardAllTask = () => {
           {/* table headings - top row */}
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 Title
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 description
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
+                Status
+              </th>
+              <th className="px-6 py-3">
                 Priority
               </th>
               <th scope="col" className="px-6 py-3">
@@ -75,10 +62,10 @@ const DashboardAllTask = () => {
               <th scope="col" className="px-6 py-3">
                 edit
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th className="px-6 py-3">
                 delete
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th  className="px-6 py-3">
                 complete
               </th>
             </tr>
@@ -94,18 +81,17 @@ const DashboardAllTask = () => {
                   scope="row"
                   className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                 >
-                  {data?.title}
+                  {data?.TaskName}
                 </td>
-                <td className="px-6 py-4">Silver</td>
-                <td className="px-6 py-4">Laptop</td>
+                <td className="px-6 py-4">{data?.TaskMsg}</td>
+                <td className="px-6 py-4">{data?.Status}</td>
+                <td className="px-6 py-4">{data?.TaskPriority}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{data?.TaskDeadline}</td>
                 <td className="px-6 py-4">$2999</td>
+                <td className="px-6 py-4">$2999</td>
+
                 <td className="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Edit
-                  </a>
+                  <Link className="px-4 py-1 bg-yellow-200" to={"/"}>Edit</Link>
                 </td>
               </tr>
             ))}

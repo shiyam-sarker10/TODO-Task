@@ -5,7 +5,7 @@ import { MdAddToPhotos, MdDashboard } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <div className=" fixed top-0 z-20 flex h-20 w-full items-center bg-white px-4 shadow-md">

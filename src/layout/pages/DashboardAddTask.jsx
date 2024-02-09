@@ -14,7 +14,7 @@ const DashboardAddTask = () => {
     const TaskDeadline = e.target.time.value;
     const TaskPriority = selectedPriority;
     
-    const Status = "inComplete";
+    const Status = "complete";
     const info = {
       TaskName,
       TaskMsg,
