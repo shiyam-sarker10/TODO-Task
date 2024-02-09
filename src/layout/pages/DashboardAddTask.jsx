@@ -14,16 +14,16 @@ const DashboardAddTask = () => {
     const TaskDeadline = e.target.time.value;
     const TaskPriority = selectedPriority;
     
-    const category = "inComplete";
+    const Status = "inComplete";
     const info = {
       TaskName,
       TaskMsg,
       TaskDeadline,
       TaskPriority,
-      category,
+      Status,
     };
     axios
-      .post("https://scic-server-psi.vercel.app/addTask", info)
+      .post("http://localhost:5000/addTask", info)
       .then(() => {
         e.target.reset();
         toast.success("Successfully Inserted!", {
