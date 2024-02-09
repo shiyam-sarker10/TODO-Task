@@ -28,6 +28,7 @@ const Dashboard = () => {
           {/* navList container  */}
           <div className="flex flex-col">
             <NavLink
+              onClick={() => setIsOpen(false)}
               to="/"
               className={({ isActive, isPending }) =>
                 isPending
@@ -41,6 +42,7 @@ const Dashboard = () => {
               <span>Dashboard</span>
             </NavLink>
             <NavLink
+              onClick={() => setIsOpen(false)}
               to="/addTask"
               className={({ isActive, isPending }) =>
                 isPending
@@ -54,6 +56,7 @@ const Dashboard = () => {
               <span>Add Task</span>
             </NavLink>
             <NavLink
+              onClick={() => setIsOpen(false)}
               to="/allTask"
               className={({ isActive, isPending }) =>
                 isPending
