@@ -23,7 +23,7 @@ const DashboardAddTask = () => {
       Status,
     };
     axios
-      .post("http://localhost:5000/addTask", info)
+      .post("https://experiment-server.vercel.app/addTask", info)
       .then(() => {
         e.target.reset();
         toast.success("Successfully Inserted!", {

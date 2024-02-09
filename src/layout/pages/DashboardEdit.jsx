@@ -26,7 +26,7 @@ const DashboardEdit = () => {
       Status,
     };
     axios
-      .put(`http://localhost:5000/editTask?id=${id}`, info)
+      .put(`https://experiment-server.vercel.app/editTask?id=${id}`, info)
       .then(() => {
         e.target.reset();
         toast.success("Successfully Edited!", {

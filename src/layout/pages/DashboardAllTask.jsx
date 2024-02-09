@@ -14,7 +14,7 @@ const DashboardAllTask = () => {
 
     useEffect(() => {
      const  Fetching = async() => {
-        const response = await axios.get(`http://localhost:5000/tasks?value=${status}`);
+        const response = await axios.get(`https://experiment-server.vercel.app/tasks?value=${status}`);
      setDatas(response.data)
 
      }
@@ -26,7 +26,7 @@ const DashboardAllTask = () => {
 
     const handleComplete = (id) => {
         axios
-          .patch(`http://localhost:5000/updateTask?id=${id}`,{Status:"complete"} )
+          .patch(`https://experiment-server.vercel.app/updateTask?id=${id}`,{Status:"complete"} )
           .then(() => {
             toast.success("Successfully Completed!", {
               position: "top-center",
@@ -46,7 +46,7 @@ const DashboardAllTask = () => {
 
     const handleDelete = (id) => {
         axios
-          .delete(`http://localhost:5000/deleteTask?id=${id}`)
+          .delete(`https://experiment-server.vercel.app/deleteTask?id=${id}`)
           .then(() => {
             toast.success("Successfully Deleted!", {
               position: "top-center",
