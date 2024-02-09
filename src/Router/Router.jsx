@@ -3,6 +3,7 @@ import Dashboard from './../layout/Dashboard';
 import DashboardStatistics from './../layout/pages/DashboardStatistics';
 import DashboardAddTask from "../layout/pages/DashboardAddTask";
 import DashboardAllTask from "../layout/pages/DashboardAllTask";
+import DashboardEdit from "../layout/pages/DashboardEdit";
 
 
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path:"allTask",
         element:<DashboardAllTask></DashboardAllTask>
+      },
+      {
+        path:"editTask/:id",
+        element:<DashboardEdit></DashboardEdit>
       }
     ],
   },

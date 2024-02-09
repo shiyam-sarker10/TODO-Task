@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { TaskLottie } from '../../component/LottieReact/LottieReact';
 
-const DashboardAddTask = () => {
+const DashboardEdit = () => {
+    const {id} = useParams()
 
-  const [selectedPriority, setSelectedPriority] = useState("");
+    const [selectedPriority, setSelectedPriority] = useState("");
+    
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const DashboardAddTask = () => {
     const TaskDeadline = e.target.time.value;
     const TaskPriority = selectedPriority;
     
-    const Status = "inComplete";
+    const Status = "complete";
     const info = {
       TaskName,
       TaskMsg,
@@ -23,10 +26,10 @@ const DashboardAddTask = () => {
       Status,
     };
     axios
-      .post("http://localhost:5000/addTask", info)
+      .put(`http://localhost:5000/editTask?id=${id}`, info)
       .then(() => {
         e.target.reset();
-        toast.success("Successfully Inserted!", {
+        toast.success("Successfully Edited!", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,
@@ -39,13 +42,11 @@ const DashboardAddTask = () => {
       })
       .catch(() => {});
   };
-  return (
-    <div className="flex items-center justify-center">
-      {/* add Task form  */}
-      <div className="w-full md:w-1/2">
+    return (
+      <div className="mx-auto w-full md:w-1/2">
         <form onSubmit={handleSubmit}>
           <div className="max-w-[500px] space-y-4  rounded-xl  px-4 py-10 ">
-            <h1 className="pb-4 text-4xl font-medium">Add Your Task</h1>
+            <h1 className="pb-4 text-4xl font-medium text-center">Edit Your Task</h1>
             {/* title  */}
             <div>
               <label
@@ -117,18 +118,15 @@ const DashboardAddTask = () => {
               </select>
             </div>
 
-            <button className="rounded  border border-black px-6 py-2 text-sm duration-500 ease-in-out hover:bg-black hover:text-white md:text-base">
-              Add Task
-            </button>
+            <div className='flex justify-center'>
+              <button type='submit' className="rounded  border border-black px-6 py-2 text-sm duration-500 ease-in-out hover:bg-black hover:text-white md:text-base ">
+                Edit Task
+              </button>
+            </div>
           </div>
         </form>
       </div>
-      {/* Lottie gif  */}
-      <div className="hidden md:block md:w-[50%]">
-        <TaskLottie></TaskLottie>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default DashboardAddTask;
+export default DashboardEdit;
