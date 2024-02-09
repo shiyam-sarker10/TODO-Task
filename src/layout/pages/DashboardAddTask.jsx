@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { TaskLottie } from '../../component/LottieReact/LottieReact';
 
 const DashboardAddTask = () => {
 
@@ -40,7 +41,7 @@ const DashboardAddTask = () => {
   };
   return (
     <div className="flex items-center justify-center">
-        {/* add Task form  */}
+      {/* add Task form  */}
       <div className="w-full md:w-1/2">
         <form onSubmit={handleSubmit}>
           <div className="max-w-[500px] space-y-4  rounded-xl  px-8 py-10 ">
@@ -123,7 +124,9 @@ const DashboardAddTask = () => {
         </form>
       </div>
       {/* Lottie gif  */}
-      
+      <div className="hidden md:block md:w-[50%]">
+        <TaskLottie></TaskLottie>
+      </div>
     </div>
   );
 };

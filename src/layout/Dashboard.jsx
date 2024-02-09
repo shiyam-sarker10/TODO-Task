@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div>
-      <div className=" fixed top-0 flex h-20 w-full items-center bg-white px-4 shadow-md">
+      <div className=" fixed top-0 flex h-20 w-full items-center bg-white px-4 shadow-md z-20">
         <FiMenu onClick={() => setIsOpen(true)} className="text-[30px]" />
       </div>
       <div className="flex h-full">
@@ -20,7 +20,7 @@ const Dashboard = () => {
         ></div>
 
         <div
-          className={`fixed top-0 h-screen w-[300px] border bg-white  duration-300 lg:sticky  ${isOpen ? "left-0" : "-left-[500px]"}`}
+          className={`fixed top-0 h-screen w-[300px] border bg-white z-30  duration-300 lg:sticky  ${isOpen ? "left-0" : "-left-[500px]"}`}
         >
           <h1 className="pb-10 pt-20 text-center text-3xl font-semibold">
             Dashboard
@@ -70,7 +70,7 @@ const Dashboard = () => {
         </div>
 
         {/* content side - outlet  */}
-        <div className={` w-full px-8 pb-10 pt-24 lg:w-[calc(100vw-300px)]`}>
+        <div className={` w-full px-8 pb-10 pt-24 lg:w-[calc(100vw-300px)] z-10`}>
           <Outlet></Outlet>
         </div>
       </div>
