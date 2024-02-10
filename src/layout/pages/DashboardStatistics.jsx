@@ -33,9 +33,11 @@ const DashboardStatistics = () => {
      ["Total Task", all.length],
      ["inComplete Task", complete.length],
      ["Complete Task", inComplete.length],
+     
    ];
     const options = {
       title: "My Daily Activities",
+      colors: ["#3366CC","#DC3912" ,"#109618"],
     };
     return (
       <div>
@@ -131,7 +133,9 @@ const DashboardStatistics = () => {
             </svg>
             <div className=" py-6 text-center">
               <h1 className="text-xl font-medium text-[#3F415A]">Total Task</h1>
-              <h1 className="text-3xl font-semibold text-[#3F415A]">50</h1>
+              <h1 className="text-3xl font-semibold text-[#3F415A]">
+                {all?.length}
+              </h1>
             </div>
           </div>
           {/* incomplete Task  */}
@@ -199,7 +203,9 @@ const DashboardStatistics = () => {
               <h1 className="text-xl font-medium text-[#3F415A]">
                 Incomplete Task
               </h1>
-              <h1 className="text-3xl font-semibold text-[#3F415A]">50</h1>
+              <h1 className="text-3xl font-semibold text-[#3F415A]">
+                {inComplete?.length}
+              </h1>
             </div>
           </div>
           {/* completed Task  */}
@@ -273,11 +279,13 @@ const DashboardStatistics = () => {
               <h1 className="text-xl font-medium text-[#3F415A]">
                 Completed Task
               </h1>
-              <h1 className="text-3xl font-semibold text-[#3F415A]">50</h1>
+              <h1 className="text-3xl font-semibold text-[#3F415A]">
+                {complete?.length}
+              </h1>
             </div>
           </div>
         </div>
-        <div className="rounded-2xl bg-white  shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)] overflow-hidden">
+        <div className="overflow-hidden rounded-2xl  bg-white shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)]">
           <Chart
             chartType="PieChart"
             data={data}
