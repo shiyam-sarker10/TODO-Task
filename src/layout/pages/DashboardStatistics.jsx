@@ -285,6 +285,7 @@ const DashboardStatistics = () => {
             </div>
           </div>
         </div>
+        {/* statistics  */}
         <div className="overflow-hidden rounded-2xl  bg-white shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)]">
           <Chart
             chartType="PieChart"
