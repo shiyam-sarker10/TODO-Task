@@ -74,7 +74,7 @@ const Dashboard = () => {
 
         {/* content side - outlet  */}
         <div
-          className={` z-10 w-full px-8 pb-10 pt-24 lg:w-[calc(100vw-300px)]`}
+          className={` z-10 w-full px-8 pb-10 pt-24 lg:w-[calc(100vw-300px)] bg-slate-50`}
         >
           <Outlet></Outlet>
         </div>
